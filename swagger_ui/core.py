@@ -19,7 +19,10 @@ class Interface(object):
         self._app = app
         self._title = title
         self._url_prefix = url_prefix.rstrip('/')
-        self._static_prefix = static_prefix.rstrip('/') or self._url_prefix
+        if static_prefix:
+            self._static_prefix = static_prefix.rstrip('/')
+        else:
+            self._static_prefix = self._url_prefix
         self._config_url = config_url
         self._config_path = config_path
         self._editor = editor
